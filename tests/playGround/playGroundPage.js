@@ -11,6 +11,7 @@ export class PlayGroundPage{
         this.waitConditionsButton = this.pageConst.locator('body > div.container.shadow-lg > div:nth-child(7) > div:nth-child(1) > div > div.card-body > a')
         this.minWaitInput = this.pageConst.locator('input[id="min_wait"]')
         this.maxWaitInput = this.pageConst.locator('input[id="max_wait"]')
+        this.alertButton = this.pageConst.locator("button[id='alert_trigger']")
     }
 
     async navigatePlayground(){
@@ -32,6 +33,10 @@ export class PlayGroundPage{
      */
     async setMaxWait(number){
         await this.maxWaitInput.fill(number)
+    }
+
+    async clickAlertButton(){
+        await this.alertButton.click()
     }
 }
 
