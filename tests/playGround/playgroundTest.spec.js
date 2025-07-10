@@ -1,6 +1,5 @@
 const {test, expect} = require("./BasePage")
 const dataFixture = require("../playGround/fixturePlayGround.json")
-const { start } = require("repl")
 
 test.describe('PlayGround test with Playwright', () => {
 
@@ -12,10 +11,10 @@ test.describe('PlayGround test with Playwright', () => {
 
     test.describe('Wait conditions', () => {
         
-        test('Check wait conditions title', async({playgroundBase, page}) => {
+        test('Check wait conditions url', async({playgroundBase, page}) => {
             await playgroundBase.clickWaitConditionsbutton()
 
-            await expect(page.url()).toContain('expected_conditions.html')
+            await expect(page.url()).toContain(dataFixture.waitConditionsURL)
         })
 
         test('set Min and Max waiting', async({playgroundBase}) => {
@@ -45,7 +44,6 @@ test.describe('PlayGround test with Playwright', () => {
                 
                 await dialog.accept()
             })
-
         })
     })
 })

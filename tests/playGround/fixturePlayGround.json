@@ -1,4 +1,5 @@
 {
+    "waitConditionsURL": "/expected_conditions.html",
     "playgroundTitle": "The Playground",
     "anApplicationTitle": "an Application Under Test",
     "waitConditionsLabel": "Wait Conditions",
