@@ -1,13 +1,19 @@
-const {test, expect} = require("../fixtures/pages");
+const {test, expect} = require("../fixtures/pages")
 const dataFix = require("../fixtures/fixtureToDo.json")
 
-test("basic test", async({todoPage, page}) => {
+test("Add To Do", async({toDoFixture, page}) => {
    
-        await todoPage.addTodo(dataFix.data1)
-        await todoPage.addTodo(dataFix.data2)
+    // await todoPageFixture.addTodo(dataFix.data1)
+    // await todoPageFixture.addTodo(dataFix.data2)
 
-    await expect(page.getByTestId("todo-title")).toContainText([
+    await expect(toDoFixture.toDoList).toContainText([
         dataFix.data1,
         dataFix.data2
-    ]);
-});
+    ])
+
+    await expect(toDoFixture.Itemslabel).toContainText(dataFix.itemsList)
+})
+
+// test('Validate todo labels is updated', async ({todoPageFixture}) => {
+//     await todoPageFixture.addTodo()
+// })
