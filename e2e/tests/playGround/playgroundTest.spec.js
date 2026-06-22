@@ -1,4 +1,4 @@
-const {test, expect} = require("./BasePage")
+const { test, expect } = require("./BasePage")
 const dataFixture = require("./fixturePlayGround.json")
 
 test.describe('PlayGround test with Playwright', () => {

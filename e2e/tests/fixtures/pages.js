@@ -3,8 +3,8 @@
  */
 
 const base = require("@playwright/test")
-const { ToDoPageFile } = require("../fixtures/todo-page")
-const dataFix = require("../fixtures/fixtureToDo.json")
+const { ToDoPageFile } = require("./todo-page")
+const dataFix = require("./fixtureToDo.json")
 
 
 exports.test = base.test.extend({ //this statement its like  Cypress.Commands.add() to create a version of my test  and extend the fixture that we are creating in the next statement 

@@ -1,15 +1,17 @@
-const base = require("@playwright/test")
-const { PlayGroundPage } = require("./playGroundPage")
+const { test: base, expect } = require("@playwright/test");
+const { PlayGroundPage } = require("./playGroundPage");
 
-exports.test = base.test.extend({
-    playgroundBase: async({page}, use) => {
+// Extendemos el test de Playwright
+exports.test = base.extend({
+    // Definimos el fixture 'playgroundBase'
+    playgroundBase: async ({ page }, use) => {
         
-        const playGround = new PlayGroundPage(page)
-
-        await playGround.navigatePlayground()
-
-        await use(playGround)
+        const playGround = new PlayGroundPage(page);
+        await playGround.navigatePlayground();
+        
+        await use(playGround);
     }
-})
+});
 
-exports.expect = base.expect
+// Exportamos expect tal cual
+exports.expect = expect;

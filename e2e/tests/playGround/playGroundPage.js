@@ -1,4 +1,4 @@
-export class PlayGroundPage{
+export class PlayGroundPage {
     /**
      * @param {import('playwright/test').Page} playwrightPage
      */
