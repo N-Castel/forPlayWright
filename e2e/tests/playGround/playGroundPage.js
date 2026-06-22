@@ -1,9 +1,9 @@
-export class PlayGroundPage {
+class PlayGroundPage {
     /**
-     * @param {import('playwright/test').Page} playwrightPage
+     * @param {import('@playwright/test').Page} playwrightPage
      */
 
-    constructor(playwrightPage, Page){
+    constructor(playwrightPage){
         this.pageConst = playwrightPage;
         this.playgroundTitle = this.pageConst.locator('h1');
         this.playgroundH3 = this.pageConst.locator('h3');
