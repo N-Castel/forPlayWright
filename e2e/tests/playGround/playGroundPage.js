@@ -22,21 +22,42 @@ class PlayGroundPage {
         await this.waitConditionsButton.click();
     }
     /**
-     * @param {string} number
+     * @param {string | number} number
      */
     async setMinWait(number){
-        await this.minWaitInput.fill(number);
+        await this.minWaitInput.fill(String(number));
     }
 
     /**
-     * @param {string} number
+     * @param {string | number} number
      */
     async setMaxWait(number){
-        await this.maxWaitInput.fill(number);
+        await this.maxWaitInput.fill(String(number));
     }
 
     async clickAlertButton(){
         await this.alertButton.click();
+    }
+
+    async validateAlertTime() {
+        const startTime = Date.now();
+
+        const dialogPromise = this.pageConst.waitForEvent('dialog');
+
+        await this.clickAlertButton();
+
+        const dialog = await dialogPromise;
+
+        const elapsed = (Date.now() - startTime) / 1000;
+        
+        console.log(`Alert appears after: ${elapsed} segundos`);
+
+        return {
+        elapsed,
+        alertText: dialog.message(),
+        dialogObject: dialog
+        
+        };
     }
 }
 

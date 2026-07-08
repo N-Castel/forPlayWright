@@ -24,26 +24,18 @@ test.describe('PlayGround test with Playwright', () => {
             await playgroundBase.setMaxWait(dataFixture.maxWaitValue)
         })
 
-        test('Wait for alert to be present', async({playgroundBase, page}) => {
+        test('Wait for alert to be present', async ({ playgroundBase }) => {
             await playgroundBase.clickWaitConditionsbutton()
             await playgroundBase.setMinWait(dataFixture.minWaitValue)
             await playgroundBase.setMaxWait(dataFixture.maxWaitValue)
-            await playgroundBase.clickAlertButton() 
 
-            const startTime =  Date.now()
+            const result = await playgroundBase.validateAlertTime();
 
-            page.once('dialog', async (dialog) => {
-                const elapsed = (Date.now() - startTime / 1000 )
-                
-                expect(dialog.message()).toBe('I am alerting you!')
+            expect(result.alertText).toBe(dataFixture.messageAlertl);
+            expect(result.elapsed).toBeGreaterThanOrEqual(dataFixture.minWaitValue);
+            expect(result.elapsed).toBeLessThanOrEqual(dataFixture.maxWaitValue);
 
-                console.log('Alert appears after: ' + elapsed + ' segundos')
-
-                await expect(elapsed).toBeGreaterThanOrEqual(dataFixture.minWaitValue)
-                await expect(elapsed).toBeLessThanOrEqual(dataFixture.maxWaitValue)
-                
-                await dialog.accept()
-            })
-        })
+            await result.dialogObject.accept();
+        });
     })
 })

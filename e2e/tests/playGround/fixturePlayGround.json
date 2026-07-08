@@ -3,6 +3,7 @@
     "playgroundTitle": "The Playground",
     "anApplicationTitle": "an Application Under Test",
     "waitConditionsLabel": "Wait Conditions",
-    "minWaitValue": "3",
-    "maxWaitValue": "5"
+    "minWaitValue": 3,
+    "maxWaitValue": 5,
+    "messageAlertl": "I am alerting you!"
 }
