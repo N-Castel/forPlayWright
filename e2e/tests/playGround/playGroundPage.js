@@ -56,7 +56,7 @@ class PlayGroundPage {
         elapsed,
         alertText: dialog.message(),
         dialogObject: dialog
-        
+
         };
     }
 }
