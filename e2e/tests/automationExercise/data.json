@@ -1,7 +1,7 @@
 {
     "urlProduct": "products",
-    "nameProduct": "Tshirt",
+    "urlCart": "view_cart",
     "productAddedCart": "Your product has been added to cart.",
-    "nameProductInCart": "Men Tshirt",
+    "nameProduct": "Men Tshirt",
     "cottonVShirt": "Pure Cotton V-Neck T-Shirt"
 }
