@@ -1,59 +1,48 @@
-
 class AutomationPage{
     /**
      * @param {import('playwright/test').Page} playwrightPage
+     * 
      */
 
-    constructor(playwrightPage){
+    constructor(playwrightPage, buttons){
         this.page = playwrightPage;
 
-        this.productsButton = this.page.locator('li > a[href="/products"]');
+        this.productLink = this.page.getByRole('link', {name: 'Products'});
         this.searchInput = this.page.getByTestId('search_product');
-        this.submitSearchButton = this.page.getByTestId('submit_search');
+        this.submitButton = this.page.getByTestId('submit_search');
 
-        this.productByName = (productName) =>
-            this.page.locator('.single-products').filter({
-                has: this.page.locator('p', { hasText: new RegExp(`^${productName}$`)})
-        });
+        this.itemProductByName = (productName) => 
+            this.page.locator('.single-products').filter({has: this.page.locator('p', {hasText: productName})})
 
-        this.addProductCartButton = this.page.locator('a.add-to-cart');
-        this.cartButton = this.page.locator('.modal-body a')
+        this.cartLink = this.page.getByRole('link', {name: 'View Cart'});
 
-        this.itemCartProductByName = (productName) => this.page.locator('h4 > a', {hasText: productName });
+        this.itemInCartByName = (productName) => 
+            this.page.locator('.cart_description').filter({has: this.page.locator('h4 > a', {hasText: productName})})
     }
 
     async navigate(){
-        await this.page.goto('')
-    } 
+        await this.page.goto('');
+    }
 
-    async clickProductsButton(){
-        await this.productsButton.click();
-        
+    async clickProductLink(){
+        await this.productLink.click();
     }
     /**
      * @param {string} productName
      */
-
     async searchProduct(productName){
         await this.searchInput.fill(productName);
-        await this.submitSearchButton.click();
+        await this.submitButton.click();
     }
 
-    async addItemCart(productName){
-        const item = this.productByName(productName);
-        await item.locator('.product-overlay a.add-to-cart').click();
+    async addProductCart(productName){
+        const item = this.itemProductByName(productName);
+        await item.locator('.productinfo > a.add-to-cart').click();
     }
 
-    async clickCartButton(){
-        await this.cartButton.click();
-    }
-    /**
-     * 
-     * @param {string} productName 
-     */
-    async cartItemAdded(productName){
-        return this.itemCartProductByName(productName);
+    async clickCartLink(){
+        await this.cartLink.click()
     }
 }
 
-module.exports = {AutomationPage}
+module.exports = { AutomationPage }

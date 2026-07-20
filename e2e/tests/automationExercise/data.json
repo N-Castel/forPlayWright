@@ -1,7 +1,4 @@
 {
-    "urlProduct": "products",
-    "urlCart": "view_cart",
-    "productAddedCart": "Your product has been added to cart.",
-    "nameProduct": "Men Tshirt",
-    "cottonVShirt": "Pure Cotton V-Neck T-Shirt"
+    "productURL": "products",
+    "productItem": "Premium Polo T-Shirts"
 }
