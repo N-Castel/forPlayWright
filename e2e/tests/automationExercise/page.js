@@ -4,7 +4,7 @@ class AutomationPage{
      * 
      */
 
-    constructor(playwrightPage, buttons){
+    constructor(playwrightPage){
         this.page = playwrightPage;
 
         this.productLink = this.page.getByRole('link', {name: 'Products'});
