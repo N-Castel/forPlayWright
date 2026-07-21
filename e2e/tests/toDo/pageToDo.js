@@ -1,5 +1,3 @@
-const { todo } = require('node:test');
-
 class AutomationPage{
 
     /**
@@ -10,14 +8,18 @@ class AutomationPage{
         this.page = playwrightPage;
         this.toDoInput = this.page.getByTestId('new-todo');
         this.countItems = this.page.locator('.todo-count > strong');
-        
-        this.toDoByName = (toDoName) => 
-            this.page.locator('.todo-list li').filter({has: this.page.locator('.view > label', {hasText: toDoName})})
     }
-
+    
+    /**
+     * @param {string} nameProduct
+     */
+    getItemByName(nameProduct){
+        return this.page.locator('.todo-list li').filter({hasText: nameProduct})
+    }
+    
     async navigateTodo(){
         await this.page.goto('')
-    }
+    };
 
     /**
      *@param {string} value 
@@ -25,12 +27,12 @@ class AutomationPage{
     async addToDo(value){
         await this.toDoInput.fill(value);
         await this.toDoInput.press('Enter')
-    }
+    };
 
     async checkTodoCompleted(toDoName){
         const completedButton = this.toDoByName(toDoName);
         await completedButton.locator('input.toggle').check()
-    }  
+    };  
     
     toDoClass(toDoName){
         return this.toDoByName(toDoName)

@@ -37,3 +37,4 @@ test('Add Product to Cart and validate was added', async ({page}) => {
         await expect(testPage.itemInCartByName(data.productItem)).toContainText(data.productItem);
     });
 })
+

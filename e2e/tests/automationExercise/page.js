@@ -10,14 +10,33 @@ class AutomationPage{
         this.productLink = this.page.getByRole('link', {name: 'Products'});
         this.searchInput = this.page.getByTestId('search_product');
         this.submitButton = this.page.getByTestId('submit_search');
-
-        this.itemProductByName = (productName) => 
-            this.page.locator('.single-products').filter({has: this.page.locator('p', {hasText: productName})})
-
         this.cartLink = this.page.getByRole('link', {name: 'View Cart'});
+    }
 
-        this.itemInCartByName = (productName) => 
-            this.page.locator('.cart_description').filter({has: this.page.locator('h4 > a', {hasText: productName})})
+    /**
+     * 
+     * @param {string} productName
+     */
+    getItemByName(productName){
+        return this.page.locator('.single-products').filter({hasText: productName})
+    }
+    /**
+     * 
+     * @param {string} productName
+     */
+    itemInCartByName(productName){
+        return this.page.locator('.cart_description').filter({has: this.page.locator('h4 > a', {hasText: productName})})
+    }    
+    /**
+     * 
+     * @param {string} nameProduct
+     */
+    getItemByName(nameProduct){
+        return this.page.locator('.product-info').filter({hasText: nameProduct})
+    }
+
+    async click(pnameProductrod){
+        await this.getItemByName(nameProduct).locator('.product-info > a.add-to-cart').click();
     }
 
     async navigate(){
@@ -36,8 +55,7 @@ class AutomationPage{
     }
 
     async addProductCart(productName){
-        const item = this.itemProductByName(productName);
-        await item.locator('.productinfo > a.add-to-cart').click();
+        await this.getItemByName(productName).locator('.productinfo > a.add-to-cart').click();
     }
 
     async clickCartLink(){
