@@ -1,13 +1,3 @@
-/**
- * navigate to webpage
- * go Products
- * search product summer white top
- * click add to cart
- * validate modal product was added 
- * click view cart 
- * validate product added to cart
- * proceed to checkout
- */
 
 const {test, expect} = require('@playwright/test');
 const { AutomationPage } = require('./page');

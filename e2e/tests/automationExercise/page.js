@@ -1,3 +1,5 @@
+const test = require('node:test');
+
 class AutomationPage{
     /**
      * @param {import('playwright/test').Page} playwrightPage
