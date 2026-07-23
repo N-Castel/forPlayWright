@@ -1,0 +1,67 @@
+{
+  "validBooking": {
+    "firstname": "Nicolas",
+    "lastname": "Castro",
+    "totalprice": 150,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-05"
+    },
+    "additionalneeds": "Breakfast"
+  },
+
+  "bookingWithoutOptionalField": {
+    "firstname": "Nicolas",
+    "lastname": "Castro",
+    "totalprice": 150,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-05"
+    }
+  },
+
+  "bookingMissingRequiredField": {
+    "lastname": "Castro",
+    "totalprice": 150,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-05"
+    }
+  },
+
+  "bookingWithNegativePrice": {
+    "firstname": "Nicolas",
+    "lastname": "Castro",
+    "totalprice": -100,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-05"
+    }
+  },
+
+  "bookingWithInvalidDateRange": {
+    "firstname": "Nicolas",
+    "lastname": "Castro",
+    "totalprice": 150,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-05",
+      "checkout": "2026-01-01"
+    }
+  },
+
+  "bookingWithWrongTypes": {
+    "firstname": "Nicolas",
+    "lastname": "Castro",
+    "totalprice": "150",
+    "depositpaid": "true",
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-05"
+    }
+  }
+}
