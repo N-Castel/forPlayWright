@@ -1,26 +1,26 @@
 class RestFulPage {
     /**
-     * @param {import('plawright/test').APIRequestContext} apiContext
+     * @param {import('plawright/test').APIRequestContext} restFullPage
      */
 
-    constructor(apiContext){
-        this.apiContext = apiContext;
+    constructor(restFullPage){
+        this.page = restFullPage;
     }
 
       async createBooking(data) {
-        return this.apiContext.post('/booking', { data });
+        return this.page.post('/booking', { data });
     }
 
     async getBooking(id) {
-        return this.apiContext.get(`/booking/${id}`);
+        return this.page.get(`/booking/${id}`);
     }
 
     async getAllBookingIds() {
-        return this.apiContext.get('/booking');
+        return this.page.get('/booking');
     }
 
     async updateBooking(id, data, token) {
-        return this.apiContext.put(`/booking/${id}`, {
+        return this.page.put(`/booking/${id}`, {
             data,
             headers: {
                 Cookie: `token=${token}`,
@@ -29,7 +29,7 @@ class RestFulPage {
     }
 
     async deleteBooking(id, token) {
-        return this.apiContext.delete(`/booking/${id}`, {
+        return this.page.delete(`/booking/${id}`, {
             headers: {
                 Cookie: `token=${token}`,
             },
